@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding-top: 25px;
+            background-color: aquamarine;
+            
+        }
+        td,tr,table,th{
+            border:1px black solid;
+        }
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        th:hover,td:hover{
+            background-color: rgba(124, 255, 159, 0.922);
+            color: white;
+        }
+        #div{
+            padding: 20px;
+        }
+        button{
+            margin: 0 10px;
+            background-color: transparent;
+            border: 1px gray solid;
+            border-radius: 5px;
+        }
+        button:hover{
+            background-color: rgba(124, 255, 159, 0.922);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">These Contents are editable</h1>
+
+    <div>
+    <table contenteditable="true" id="tbl">
+        <tr>
+            <th>S. No.</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>City</th>
+            <th>Country</th>
+        </tr>
+        <tr class="tr">
+            <td>1</td>
+            <td>Saumya</td>
+            <td>Gupta</td>
+            <td>Lucknow</td>
+            <td>India</td>
+        </tr>
+        <tr class="tr">
+            <td>2</td>
+            <td>Uttkarsh</td>
+            <td>Sharma</td>
+            <td>Barielly</td>
+            <td>India</td>
+        </tr>
+    </table>
+   </div>
+    <div id="div">
+    <button onclick="appendRow()"><b>Add row to bottom</b></button>
+    
+    
+    <button class="btn2" onclick="appendRowTop()"><b>Add row to top</b></button>
+</div>
+    <script>
+        function appendRow(){
+          let cell,firstRow,row;
+          let table=document.getElementById("tbl");
+          firstRow=table.rows[0];
+          row=table.insertRow(-1);
+          row.className="tr";
+          cell=row.insertCell(-1);
+          cell.innerHTML=(table.rows.length-1);
+          var input= document.createElement("input");
+          input.setAttribute("type","text");
+          for (let i=1;i<firstRow.cells.length;i++){
+            cell=row.insertCell(-1)
+            switch (i){
+              case 1:
+                cell.innerHTML="Anmol";
+                break;
+              case 2:
+                cell.innerHTML="Pandey";
+                break;
+              case 3:
+                cell.innerHTML="Ayodhya";
+                break;  
+              case 4:
+                cell.innerHTML="India";
+                break;        
+            }
+          }  
+        }
+        function appendRowTop(){
+          let cell,firstRow,row;
+          let table=document.getElementById("tbl");
+          firstRow=table.rows[0];
+          row=table.insertRow(1);
+          row.className="tr";
+          cell=row.insertCell(-1);
+          cell.innerHTML="1";
+          for (let i=0;i<firstRow.cells.length-1;i++){
+            cell=row.insertCell(-1);
+            switch (i){
+              case 0:
+                cell.innerHTML="Anmol";
+                break;
+              case 1:
+                cell.innerHTML="Pandey";
+                break;
+              case 2:
+                cell.innerHTML="Ayodhya";
+                break;  
+              case 3:
+                cell.innerHTML="India";
+                break;        
+            }
+          } 
+          for (let i=2;i<table.rows.length;i++){
+            table.rows[i].cells[0].innerHTML=i;
+          }
+        }
+    </script>
+</body>
+</html>

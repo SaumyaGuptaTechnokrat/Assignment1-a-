@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment2</title>
+    <style>
+        body{
+            background-color: cyan;
+            padding: 50px;
+        }
+        .font-size{
+            font-size: 20px;
+        }
+        input{
+            background-color: transparent;
+            outline: none;
+            border: 1px black solid;
+            border-radius: 10px;
+        }
+        input:hover{
+            background-color: rgba(170, 169, 169, 0.619);
+        }
+        textarea:hover{
+            background-color: rgba(170, 169, 169, 0.619);
+        }
+        textarea{
+            
+            background-color: transparent;
+            outline: none;
+            border: 1px black solid;
+            border-radius: 10px;
+        }
+        button{
+            background-color: transparent;
+            outline: none;
+            border: 1px black solid;
+            border-radius: 10px;
+        }
+        button:hover{
+            background-color: rgba(170, 169, 169, 0.619);
+        }
+        #main{
+            display: grid;
+            grid-template-columns: 200px 150px;
+            grid-gap:20px 10px;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            font-size: 20px;
+        }
+        #sub{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+            align-items: center;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+    <h1>Sentences</h1><textarea placeholder="hello World!" id="Sentences" class="font-size"></textarea>
+
+    <h1>Letter (in Capital):</h1><input type="text" placeholder="A TO Z" id="text1" class="font-size">
+    <h1 id="head1">RESULTS:</h1><h1 id="res"></h1>
+    
+    <button id="Example1" class="font-size" onclick="Example1()">Example1</button>
+    <button id="Example2" class="font-size" onclick="Example2()" >Example2</button>
+
+    
+</div>
+    <div id="sub">
+    <button id="submit" class="font-size" onclick="button()">Submit for existence</button>
+    <br>
+    <h1 id="head1"><h1 id="resforexists"></h1></h1>
+    </div>
+    <script>
+        function button(){
+            var sentences = document.getElementById('Sentences').value.toLowerCase();
+            var Letters = document.getElementById('text1').value.toLowerCase();
+            var head = document.getElementById('head1');
+            var isLetters = false;
+            for(var i =0;i<sentences.length;i++){
+                if(sentences.charAt(i)===Letters){
+                    isLetters=true;
+                    break;
+                }
+                
+            }
+            if(isLetters){
+                document.getElementById("resforexists").innerHTML="The letter exists";
+            }
+            else{
+                document.getElementById("resforexists").innerHTML="The letter doesn't exists";            
+            }
+        }
+        function Example1(){
+            var Sentence_isExists = document.getElementById('Sentences').value;
+            var Sentence_isExists1 = Sentence_isExists.toUpperCase();
+            var Letter_isExists = document.getElementById('text1').value;
+            var Letter_isExists1 = Letter_isExists;
+            var head = document.getElementById('head1');
+            var isExist = false;
+            for(var i =0;i<Sentence_isExists.length;i++){
+                if(Sentence_isExists1.charAt(i)===Letter_isExists1){
+                    isExist=true;
+                    break;
+                }
+                
+            }
+            if(isExist==false){
+                document.getElementById("resforexists").innerHTML="The letter doesn't  exists";
+                document.getElementById('res').innerHTML='';
+            }
+            else{
+                var res = '';
+                document.getElementById("resforexists").innerHTML="The letter  exists";
+
+                var Original_Sentences= document.getElementById('Sentences').value;
+                var Sentences=Original_Sentences.toLowerCase();
+                var Original_Letter = document.getElementById('text1').value.toLowerCase();
+                var letter =Original_Letter.toLowerCase(); 
+                //var name = [];
+
+                for(var i=0;i<Original_Sentences.length;i++){
+                    var res =  Original_Sentences.slice(Original_Sentences.indexOf(letter)+1);
+                    /*name = res.split(" ");
+                    console.log(name[i].charAt(0));*/
+                }
+                document.getElementById('res').innerHTML=res;
+            }
+            
+        }
+        function Example2(){
+            var sentences = document.getElementById('Sentences').value;
+            var sentences_exists = sentences.toLowerCase();
+            var Letter = document.getElementById('text1').value;
+            var Letter_exists = Letter.toLowerCase();
+            var head = document.getElementById('head1');
+            var isLetters = false;
+            for(var i =0;i<sentences.length;i++){
+                if(sentences_exists.charAt(i)===Letter_exists){
+                    isLetters=true;
+                    break;
+                }
+                
+            }
+            if(isLetters==false){
+                document.getElementById("resforexists").innerHTML="The letter doesn't  exists";
+                document.getElementById('res').innerHTML='';
+            }
+            else{
+                document.getElementById("resforexists").innerHTML="The letter  exists";
+
+            var str = '';
+            var hello= document.getElementById('Sentences').value;
+            var hellos = hello.toUpperCase();
+            var Letters = document.getElementById('text1').value;
+            var Letter = Letters.toLowerCase();
+            for(var i=0;i<hello.length;i++){
+                if(hello.charAt(i)==='!'){
+                    document.getElementById('res').innerHTML=hello.replaceAll("!","1").slice(hello.indexOf(Letter)+1);
+                    //document.getElementById('res').innerHTML=hello.replaceAll("@","2").slice(hello.indexOf(Letter)+1);
+
+                }
+                else if(hello.charAt(i)==='@'){
+                    document.getElementById('res').innerHTML=hello.replaceAll("@","2").slice(hello.indexOf(Letter)+1);
+                }
+                
+                else if(hello.charAt(i)==='#'){
+                    document.getElementById('res').innerHTML=hello.replaceAll("#","3").slice(hello.indexOf(Letter)+1);
+                }
+                
+                else if(hello.charAt(i)==='$'){
+                    document.getElementById('res').innerHTML=hello.replaceAll("$","4").slice(hello.indexOf(Letter)+1);
+                }
+                
+                else if(hello.charAt(i)==='%'){
+                    document.getElementById('res').innerHTML=hello.replaceAll("%","5").slice(hello.indexOf(Letter)+1);
+                }
+                
+                else if(hello.charAt(i)==='^'){
+                    document.getElementById('res').innerHTML=hello.replaceAll("^","6").slice(hello.indexOf(Letter)+1);
+                }
+                
+                else if(hello.charAt(i)==='&'){
+                    document.getElementById('res').innerHTML=hello.replaceAll("&","7").slice(hello.indexOf(Letter)+1);
+                }
+                
+                else if(hello.charAt(i)==='*'){
+                    document.getElementById('res').innerHTML=hello.replaceAll("*","8").slice(hello.indexOf(Letters)+1);
+                }
+            }
+                }
+        }
+    </script>
+</body>
+</html>
