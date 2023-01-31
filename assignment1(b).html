@@ -68,13 +68,13 @@
     </table>
    </div>
     <div id="div">
-    <button onclick="appendRow()"><b>Add row to bottom</b></button>
+    <button onclick="addRowToBottom()"><b>Add row to bottom</b></button>
     
     
-    <button class="btn2" onclick="appendRowTop()"><b>Add row to top</b></button>
+    <button class="btn2" onclick="addRowToTop()"><b>Add row to top</b></button>
 </div>
     <script>
-        function appendRow(){
+        function addRowToBottom(){
           let cell,firstRow,row;
           let table=document.getElementById("tbl");
           firstRow=table.rows[0];
@@ -102,7 +102,7 @@
             }
           }  
         }
-        function appendRowTop(){
+        function addRowToTop(){
           let cell,firstRow,row;
           let table=document.getElementById("tbl");
           firstRow=table.rows[0];
